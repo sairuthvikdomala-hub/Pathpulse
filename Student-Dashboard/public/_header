@@ -1,0 +1,20 @@
+/*
+  Security Headers for PathPulse Student App
+  Purpose: OWASP-compliant HTTP security headers via Netlify
+*/
+/*
+  /*
+    # SECURITY: Prevent clickjacking attacks
+    X-Frame-Options: DENY
+    # SECURITY: Prevent MIME-type sniffing attacks
+    X-Content-Type-Options: nosniff
+    # SECURITY: Enforce HTTPS for 1 year + subdomains
+    Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+    # SECURITY: Control referrer information leakage
+    Referrer-Policy: strict-origin-when-cross-origin
+    # SECURITY: Restrict browser features (camera, mic, geolocation, payment)
+    Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+    # SECURITY: Content Security Policy — restrict sources; allow Leaflet tiles, OSRM API
+    Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.cloudfunctions.net wss://*.firebaseio.com https://router.project-osrm.org https://*.tile.openstreetmap.org; frame-src https://accounts.google.com https://*.firebaseapp.com; object-src 'none'; base-uri 'self'
+    # SECURITY: Prevent cross-origin information leaks
+    Cross-Origin-Opener-Policy: same-origin
